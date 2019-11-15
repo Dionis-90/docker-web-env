@@ -11,7 +11,7 @@ services:
             - "4433:443"
         volumes:
             - ./nginx/confs:/etc/nginx/conf.d
-            - ./app/seotaster:/var/www/seotoaster
+            - ./app/seotoaster:/var/www/seotoaster
             - ./nginx/logs:/var/log/nginx
         links:
             - php
