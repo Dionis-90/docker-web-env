@@ -1,0 +1,38 @@
+version: '3.3'
+
+services:
+
+    nginx:
+#        image: nginx:latest
+        build: ./nginx
+        container_name: nginx
+        ports:
+            - "8080:80"
+            - "4433:443"
+        volumes:
+            - ./nginx/confs:/etc/nginx/conf.d
+            - ./app/seotaster:/var/www/seotoaster
+            - ./nginx/logs:/var/log/nginx
+        links:
+            - php
+
+    mysql:
+        build: ./mysql
+#        image: mysql:5.7
+        ports:
+            - "33061:3306"
+        container_name: mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=1111
+            - MYSQL_DATABASE=seotoaster
+            - MYSQL_USER=seotoaster
+            - MYSQL_PASSWORD=11111
+
+    php:
+        build: ./php
+        container_name: php-fpm
+        volumes:
+            - ./app/seotoaster:/var/www/seotoaster
+        links:
+            - mysql
+
