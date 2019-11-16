@@ -36,6 +36,6 @@ RUN cd /tmp \
 
 ADD php.ini /usr/local/etc/php/conf.d/40-custom.ini
 
-WORKDIR /var/www/seotaster
+WORKDIR /var/www
 
 CMD ["php-fpm"]
