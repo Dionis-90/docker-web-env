@@ -11,6 +11,7 @@ Installation & configuration
 #### Run environment
 	sudo docker-compose up --build
 or
+
 	sudo docker-compose up -d --build
 
 You can see or edit port forwarding (local-net. <-> docker-net.) in docker-compose.yml
